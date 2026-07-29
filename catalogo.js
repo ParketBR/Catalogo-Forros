@@ -1175,14 +1175,15 @@
         const total = document.getElementById('texturas-total');
         const stage = wrap.querySelector('.texturas-stage');  
 
-        // Texturas de forro — só as espécies que possuem swatch local correspondente.
+        // Texturas de forro — SOMENTE as espécies efetivamente oferecidas em forro:
+        // Cumaru, Ipê, Tauari, Freijó e Carvalho Europeu. Não incluir espécie que
+        // não esteja na linha, mesmo que exista swatch em /texturas.
         const ESPECIES = [
-          ['carvalho-europeu', 'Carvalho Europeu', 'Nobre e versátil, o carvalho europeu traz veios equilibrados e um tom acetinado que une tradição e modernidade.'],
-          ['freijo', 'Freijó', 'Madeira brasileira de tom castanho-dourado e veios suaves, transmite sofisticação e aconchego ao ambiente.'],
           ['cumaru', 'Cumaru', 'Madeira extremamente resistente, de cor castanho-avermelhada, indicada para projetos que exigem durabilidade e imponência.'],
-          ['peroba-do-campo', 'Peroba do Campo', 'Tradicional e charmosa, sua coloração variada entre o rosado e o dourado confere autenticidade e beleza natural.'],
+          ['ipe-tabaco', 'Ipê', 'Densa e de tonalidade castanho-oliva profunda, o ipê entrega presença marcante e altíssima durabilidade.'],
           ['tauari', 'Tauari', 'Clara e homogênea, o tauari ilumina os ambientes, oferecendo um visual moderno e minimalista.'],
-          ['cabreuva-dourada', 'Cabreúva Dourada', 'Apresenta brilho natural e cor dourada, com veios elegantes que proporcionam luxo e vitalidade.'],
+          ['freijo', 'Freijó', 'Madeira brasileira de tom castanho-dourado e veios suaves, transmite sofisticação e aconchego ao ambiente.'],
+          ['carvalho-europeu', 'Carvalho Europeu', 'Nobre e versátil, o carvalho europeu traz veios equilibrados e um tom acetinado que une tradição e modernidade.'],
         ];
         const n = ESPECIES.length;
         const pad = (v) => String(v).padStart(2, '0');
