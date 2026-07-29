@@ -1088,21 +1088,20 @@
 }
 
 #madeiras-tipos .mtipos-stage {
-  /* dimensões do bloco: largura (W) × profundidade (H) × espessura (T) */
+  /* painel: largura (W) × profundidade (H) × espessura (T) */
   --w: clamp(240px, 60vw, 460px);
   --h: calc(var(--w) * 0.6);
-  --t: clamp(30px, 7vw, 48px);
-  /* perfil macho-fêmea (encaixe): altura da junta, projeção da lingueta,
-     profundidade do rebaixo e altura de cada lábio da fêmea */
-  --jt: calc(var(--t) * 0.34);
-  --tp: clamp(7px, 1.6vw, 12px);
-  --gd: calc(var(--tp) + 7px);
-  --lh: calc((var(--t) - var(--jt)) / 2);
-  perspective: 1600px;
+  /* régua de forro é fina: espessura bem menor que a de um piso */
+  --t: clamp(9px, 2vw, 15px);
+  perspective: 1400px;
+  /* ponto de fuga ABAIXO do painel: é a câmera de quem está no ambiente
+     olhando para cima, como nas fotos de forro visto do deck. */
+  perspective-origin: 50% 145%;
   width: var(--w);
   height: var(--h);
   position: relative;
-  margin-bottom: var(--t);
+  /* a peça girada transborda o palco em cima e embaixo */
+  margin: calc(var(--h) * 0.3) 0;
   touch-action: none;
   cursor: grab;
   user-select: none;
@@ -1117,12 +1116,12 @@
   inset: 0;
   z-index: 1;
   /* sempre à frente da sombra */
-  transform: rotateX(58deg) rotateZ(-38deg);
+  transform: rotateX(-78deg) rotateZ(0deg);
   transform-style: preserve-3d;
   will-change: transform;
 }
 
-/* Cada face do bloco — centrada na origem e girada para formar o cuboide */
+/* Cada face da régua — centrada na origem e girada para formar o cuboide */
 #madeiras-tipos .floor-face {
   position: absolute;
   left: 50%;
@@ -1132,48 +1131,88 @@
   backface-visibility: hidden;
 }
 
-/* topo — camada nobre visível */
+/* Face +Z — camada nobre. Com a câmera por baixo (rotateX negativo) é esta a
+   face aparente: a que se enxerga do ambiente, olhando para o forro. */
 #madeiras-tipos .floor-top {
   width: var(--w);
   height: var(--h);
   transform: translate(-50%, -50%) translateZ(calc(var(--t) / 2));
-  background-image: linear-gradient(rgba(0, 0, 0, .04), rgba(0, 0, 0, .04)), url('tecnologia/madeira-01.webp');
   background-color: #8a4a2a;
   border-radius: 2px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22);
-}
-
-/* base inferior */
-#madeiras-tipos .floor-bottom {
-  width: var(--w);
-  height: var(--h);
-  transform: translate(-50%, -50%) translateZ(calc(var(--t) / -2)) rotateX(180deg);
-  background-image: linear-gradient(rgba(22, 13, 7, .55), rgba(22, 13, 7, .55)), url('tecnologia/madeira-03.jpg');
-  background-color: #4a3020;
-}
-
-/* bordas laterais — foto real do corte do piso engenheirado (lâminas do compensado).
-   A textura vai num ::before para poder ser girada 90° nas faces laterais,
-   mantendo as lâminas sempre atravessando a espessura. */
-#madeiras-tipos .floor-edge {
   overflow: hidden;
- 
-  box-shadow: inset 0 0 22px rgba(0, 0, 0, .3),
-    inset 0 1px 0 rgba(255, 255, 255, .1);
-      background-image: url('tecnologia/borda-engenheirado.webp');
-       background-position: center;
-  background-size: 100% 260%;
 }
 
-#madeiras-tipos .floor-edge::before {
+/* A textura vai num ::before girado 90°: assim os cortes/veios da madeira
+   correm no sentido VERTICAL da peça (da frente para o fundo), como as
+   réguas de um forro ripado vistas do ambiente.
+
+   As VIGAS (réguas do ripado) são desenhadas aqui mesmo, como gradiente:
+   friso escuro + quina clara a cada --viga. Como o elemento está girado 90°,
+   as faixas correm no eixo local Y (`to bottom`) para aparecerem verticais
+   na face — paralelas ao veio da madeira. Sem geometria nova: continua
+   sendo uma peça só. */
+#madeiras-tipos .floor-top::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  background-image: url('tecnologia/borda-engenheirado.webp');
-  background-repeat: no-repeat;
+  width: var(--h);
+  height: var(--w);
+  /* largura de cada viga do ripado */
+  --viga: calc(var(--w) / 22);
+  transform: translate(-50%, -50%) rotate(90deg);
+  background-image:
+    /* friso: sulco escuro entre uma viga e outra */
+    repeating-linear-gradient(to bottom,
+      rgba(26, 12, 4, .78) 0 1.5px,
+      rgba(26, 12, 4, 0) 1.5px var(--viga)),
+    /* quina iluminada logo depois do friso, dá o relevo da régua */
+    repeating-linear-gradient(to bottom,
+      rgba(255, 226, 190, .20) 1.5px 3px,
+      rgba(255, 226, 190, 0) 3px var(--viga)),
+    /* sombreado suave dentro de cada viga (arredonda a superfície) */
+    repeating-linear-gradient(to bottom,
+      rgba(0, 0, 0, .16) 0,
+      rgba(0, 0, 0, 0) 45%,
+      rgba(0, 0, 0, .10) 100%),
+    linear-gradient(rgba(0, 0, 0, .04), rgba(0, 0, 0, .04)),
+    url('tecnologia/madeira-01.webp');
+  background-size:
+    100% var(--viga),
+    100% var(--viga),
+    100% var(--viga),
+    cover,
+    cover;
   background-position: center;
-  background-size: 100% 260%;
+}
+
+/* Face -Z — costas da régua, voltada para a laje/estrutura (nunca aparece) */
+#madeiras-tipos .floor-bottom {
+  width: var(--w);
+  height: var(--h);
+  transform: translate(-50%, -50%) translateZ(calc(var(--t) / -2)) rotateX(180deg);
+  background-image: linear-gradient(rgba(22, 13, 7, .55), rgba(22, 13, 7, .55)), url('tecnologia/madeira-03.webp');
+  background-color: #4a3020;
+}
+
+/* bordas laterais — PINTADAS em azul quase preto. Antes traziam a foto do
+   corte do compensado; agora são lisas, para o olho ir só para a face ripada.
+   O brightness de cada face (abaixo) continua diferenciando as laterais e
+   sustentando a leitura de volume. */
+#madeiras-tipos .floor-edge {
+  overflow: hidden;
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, .45),
+    inset 0 1px 0 rgba(255, 255, 255, .06);
+  background-image: linear-gradient(rgba(255, 255, 255, .05), rgba(0, 0, 0, .35));
+  background-color: #0a0f18;
+  background-position: center;
+  background-size: cover;
+}
+
+/* textura do compensado desativada junto com a pintura */
+#madeiras-tipos .floor-edge::before {
+  content: none;
 }
 
 /* faces frontal/traseira: lâminas na horizontal (imagem sem girar) */
@@ -1207,13 +1246,12 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-/* capa nobre — faixa de madeira do topo, um pouco mais grossa que as lâminas
-   do miolo, encostada no topo em toda a volta (com linha de cola separando) */
+/* capa nobre — faixa fina rente à face aparente, marcando onde a madeira do
+   ripado encontra a lateral pintada. Sem a foto: agora é só a linha de quina. */
 #madeiras-tipos .floor-edge::after {
   content: "";
   position: absolute;
-  background-image: linear-gradient(rgba(255, 255, 255, .04), rgba(0, 0, 0, .16)),
-    url('tecnologia/madeira-01.webp');
+  background-image: linear-gradient(rgba(255, 255, 255, .06), rgba(0, 0, 0, .3));
   background-size: cover;
   background-position: center;
 }
@@ -1224,6 +1262,14 @@
   top: 0;
   height: 17%;
   border-bottom: 1.5px solid rgba(34, 18, 8, .75);
+}
+
+#madeiras-tipos .floor-edge-b::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 17%;
+  border-top: 1.5px solid rgba(34, 18, 8, .75);
 }
 
 #madeiras-tipos .floor-edge-l::after {
@@ -1242,78 +1288,28 @@
   border-right: 1.5px solid rgba(34, 18, 8, .75);
 }
 
-/* ---- MACHO (lingueta) removido: em vez de projetar para fora (+Y) — o que
-   causava z-fighting no preserve-3d em ângulo rasante (a lingueta "soltava"
-   no canto) — a borda frontal fica lisa (floor-edge-f) e o único encaixe é a
-   fêmea recuada PARA DENTRO na borda traseira. Peça quase convexa = gira sem bug. ---- */
+/* ---- ENCAIXE (fêmea vazada) removido ----
+   O rebaixo aberto na borda traseira deixava um vão escuro na peça. Agora a
+   régua é um cuboide fechado: a borda traseira (floor-edge-b) recebe o mesmo
+   corte de compensado das demais laterais. ---- */
 
-/* ---- FÊMEA (encaixe) — rebaixo na borda traseira (-Y): dois lábios + interior ----
-   Corre ao longo do comprimento (X); a fenda abre no meio da espessura (Z),
-   recuando para dentro (+Y). Fica na face traseira, oposta ao macho. */
-/* lábios: reaproveitam a foto do compensado (como as demais bordas) */
-#madeiras-tipos .floor-groove-lip {
+/* borda traseira (-Y) — espelho da frontal, fecha a peça */
+#madeiras-tipos .floor-edge-b {
   width: var(--w);
-  height: var(--lh);
-  background: #7c5230;
-  filter: brightness(.8);
-}
-
-#madeiras-tipos .floor-groove-lip::before {
-  width: 100%;
-  height: 100%;
-  background-size: 100% 800%;
-  transform: translate(-50%, -50%);
-}
-
-#madeiras-tipos .floor-groove-lip::after {
-  content: none;
-}
-
-#madeiras-tipos .floor-groove-lip-up {
-  transform: translate(-50%, -50%) translateY(calc(var(--h) / -2)) translateZ(calc(var(--jt) / 2 + var(--lh) / 2)) rotateX(90deg);
-}
-
-#madeiras-tipos .floor-groove-lip-lo {
-  transform: translate(-50%, -50%) translateY(calc(var(--h) / -2)) translateZ(calc((var(--jt) / 2 + var(--lh) / 2) * -1)) rotateX(90deg);
-}
-
-/* interior do rebaixo — superfícies escuras (sombreadas) do encaixe */
-#madeiras-tipos .floor-groove {
-  background: #2a1a0f;
-  box-shadow: inset 0 0 14px rgba(0, 0, 0, .55);
-}
-
-/* fundo do rebaixo (parede recuada, voltada para fora / -Y) */
-#madeiras-tipos .floor-groove-inner {
-  width: var(--w);
-  height: var(--jt);
-  transform: translate(-50%, -50%) translateY(calc(var(--h) / -2 + var(--gd))) rotateX(90deg);
-  background: #22150c;
-}
-
-/* piso e teto internos do rebaixo (planos horizontais dentro da fenda) */
-#madeiras-tipos .floor-groove-floor {
-  width: var(--w);
-  height: var(--gd);
-  transform: translate(-50%, -50%) translateY(calc(var(--h) / -2 + var(--gd) / 2)) translateZ(calc(var(--jt) / -2));
-}
-
-#madeiras-tipos .floor-groove-ceil {
-  width: var(--w);
-  height: var(--gd);
-  transform: translate(-50%, -50%) translateY(calc(var(--h) / -2 + var(--gd) / 2)) translateZ(calc(var(--jt) / 2)) rotateX(180deg);
+  height: var(--t);
+  transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(var(--h) / 2));
+  filter: brightness(.88);
 }
 
 #madeiras-tipos .mtipos-shadow {
   position: absolute;
   z-index: 0;
-  /* fica atrás do piso (é chão) */
   left: 8%;
   right: 8%;
   bottom: calc(var(--t) * -1.4);
   height: 60px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, .55) 0%, transparent 70%);
-  filter: blur(10px);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, .45) 0%, transparent 70%);
+  filter: blur(12px);
 }
 
 #madeiras-tipos .mtipos-3d-hint {
@@ -1486,7 +1482,7 @@
 
   #madeiras-tipos .mtipos-stage {
     --w: min(84vw, 360px);
-    --t: clamp(26px, 9vw, 40px);
+    --t: clamp(8px, 2.6vw, 13px);
   }
 
   #madeiras-tipos .mtipos-eyebrow {
@@ -1497,12 +1493,24 @@
 @media (prefers-reduced-motion:reduce) {
   #madeiras-tipos .mtipos-stack {
     transition: none;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    Render & Layout Performance Isolation
+
+   ATENÇÃO: este bloco estava DENTRO de um @media sem fechamento logo
+   acima, então o parser o descartava — nunca chegou a valer. O @media
+   foi corrigido; o bloco segue comentado para não mudar o comportamento
+   de scroll sem validação (content-visibility:auto pula a renderização
+   fora da viewport e pode brigar com as animações dirigidas por scroll
+   desta página). Descomente e teste o scroll antes de publicar.
    ═══════════════════════════════════════════════════════════════ */
+/*
 #products-index,
 #products,
 #madeiras-tipos {
   content-visibility: auto;
   contain-intrinsic-size: 1px 800px;
 }
+*/

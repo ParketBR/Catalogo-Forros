@@ -26,7 +26,7 @@
     }
   </script>
   <link rel="stylesheet" href="catalogo.css?v=4">
-  <link rel="stylesheet" href="index.css?v=31">
+  <link rel="stylesheet" href="index.css?v=45">
 </head>
 
 <body class="antialiased selection:bg-white selection:text-black">
@@ -140,7 +140,7 @@
           <p class="corpo-text fade">
             Em um mundo marcado pela velocidade e pelo excesso de informações, reconhecer a verdadeira qualidade
             tornou-se um diferencial. A excelência está nos detalhes, na tradição e no cuidado dedicado à criação
-            de pisos de madeira nobre concebidos para durar por gerações.
+            de forros de madeira nobre concebidos para durar por gerações.
           </p>
           <p class="corpo-text fade" style="transition-delay:.08s">
             Escolher a <span translate="no" class="notranslate">Parket</span> é valorizar conhecimento, artesanato,
@@ -175,7 +175,7 @@
       <div class="tech-head">
         <div>
 
-          <h2 class="tech-title">Você chamaria isso simplesmente de <span class="tech-accent">piso de madeira</span>?
+          <h2 class="tech-title">Você chamaria isso simplesmente de <span class="tech-accent">forro de madeira</span>?
           </h2>
         </div>
         <span class="tech-hint">Continue rolando ↓</span>
@@ -198,7 +198,7 @@
               <h3 class="tech-label-name">Camada nobre</h3>
             </div>
             <p class="tech-label-text">Madeira tropical brasileira selecionada. É ela que define cor, textura e desenho
-              natural do piso. Recebe acabamento em Verniz UV ou Laca OIL.</p>
+              natural do forro. Recebe acabamento em Verniz UV ou Laca OIL.</p>
           </div>
           <div data-tech-label="1">
             <div class="tech-label-head"><span class="tech-label-num">02</span>
@@ -225,8 +225,8 @@
             <div class="tech-label-head">
               <h3 class="tech-label-name">O Resultado</h3>
             </div>
-            <p class="tech-label-text">100% madeira tropical brasileira, com estabilidade para réguas maiores.
-              Beleza na superfície, engenharia por dentro.</p>
+            <p class="tech-label-text">100% madeira tropical brasileira, com estabilidade para réguas maiores e menos
+              peso sobre a estrutura. Beleza à vista, engenharia por dentro.</p>
           </div>
         </div>
       </div>
@@ -234,46 +234,43 @@
     </div>
   </section>
 
-  <!-- ─── MADEIRAS · tradicional vs engenheirado (piso 3D fechado e girável) ─── -->
-  <section id="madeiras-tipos" data-screen-label="Tipos de piso">
+  <!-- ─── MADEIRAS · tradicional vs engenheirado (régua 3D fechada e girável) ─── -->
+  <section id="madeiras-tipos" data-screen-label="Tipos de forro">
     <div class="mtipos-inner">
-      <!-- topo: título + intro à esquerda, piso 3D à direita -->
+      <!-- topo: título + intro à esquerda, régua 3D à direita -->
       <div class="mtipos-top">
         <div class="mtipos-copy">
           <header class="mtipos-head fade-up">
             <span class="mtipos-eyebrow">Sobre as madeiras</span>
-            <h2 class="mtipos-title">Piso tradicional ou piso engenheirado?
+            <h2 class="mtipos-title">Forro tradicional ou forro engenheirado?
               <span class="mtipos-sub">Entenda as diferenças</span>
             </h2>
           </header>
 
           <div class="mtipos-intro">
-            <p class="fade-up">Hoje existem diversos tipos de pisos de madeira no mercado, com diferentes dimensões,
+            <p class="fade-up">Hoje existem diversos tipos de forros de madeira no mercado, com diferentes dimensões,
               espécies, acabamentos e tecnologias. Por isso, a escolha não deve ser baseada apenas na estética.</p>
             <p class="fade-up" style="transition-delay:.06s">Além da beleza e da sensação de aconchego que a madeira
-              proporciona, o piso é um elemento técnico da construção. Características como estabilidade dimensional,
-              resistência às variações de umidade, espessura e desempenho ao longo do tempo fazem toda a diferença.</p>
-            <p class="mtipos-lead fade-up" style="transition-delay:.12s">A principal comparação é entre o piso tradicional
-              e o piso engenheirado.</p>
+              proporciona, o forro é um elemento técnico da construção. Características como estabilidade dimensional,
+              resistência às variações de umidade, espessura, peso sobre a estrutura e desempenho ao longo do tempo
+              fazem toda a diferença.</p>
+            <p class="mtipos-lead fade-up" style="transition-delay:.12s">A principal comparação é entre o forro
+              tradicional e o forro engenheirado.</p>
           </div>
         </div>
 
-        <!-- piso 3D reaproveitado: fechado e arrastável com o mouse -->
+        <!-- régua 3D reaproveitada: fechada e arrastável com o mouse -->
         <div class="mtipos-3d fade-up">
           <div class="mtipos-stage" data-floor3d>
+            <!-- Peça única, cuboide fechado. -->
             <div class="mtipos-stack" data-floor3d-stack>
               <div class="floor-face floor-top"></div>
               <div class="floor-face floor-bottom"></div>
               <div class="floor-face floor-edge floor-edge-f"></div>
               <div class="floor-face floor-edge floor-edge-l"></div>
               <div class="floor-face floor-edge floor-edge-r"></div>
-              <!-- encaixe: só a fêmea (rebaixo recuado PARA DENTRO) na borda traseira.
-                   Sem lingueta projetada = sem z-fighting no preserve-3d, gira livre. -->
-              <div class="floor-face floor-edge floor-groove-lip floor-groove-lip-up"></div>
-              <div class="floor-face floor-edge floor-groove-lip floor-groove-lip-lo"></div>
-              <div class="floor-face floor-groove floor-groove-inner"></div>
-              <div class="floor-face floor-groove floor-groove-floor"></div>
-              <div class="floor-face floor-groove floor-groove-ceil"></div>
+              <!-- borda traseira fechada: mesmo corte de compensado das outras laterais -->
+              <div class="floor-face floor-edge floor-edge-b"></div>
             </div>
             <div class="mtipos-shadow" data-floor3d-shadow></div>
           </div>
@@ -281,19 +278,19 @@
             <svg viewBox="0 0 40 12" aria-hidden="true">
               <path d="M6 6h28M6 6l4-4M6 6l4 4M34 6l-4-4M34 6l-4 4" />
             </svg>
-            <span>Arraste para girar o piso</span>
+            <span>Arraste para girar a régua</span>
           </p>
         </div>
       </div>
 
       <div class="mtipos-cards">
 
-  <!-- Piso Tradicional -->
+  <!-- Forro Tradicional -->
   <article class="mtipos-card fade-up visible">
 
     <span class="mtipos-badge">Madeira Maciça</span>
 
-    <h3 class="mtipos-card-title">Piso Tradicional</h3>
+    <h3 class="mtipos-card-title">Forro Tradicional</h3>
 
     <p class="mtipos-intro">
       Produzido a partir de uma única peça de madeira, preservando toda a
@@ -309,6 +306,7 @@
       <li>Visual totalmente natural</li>
       <li>Movimentação natural da madeira</li>
       <li>Pode apresentar frestas e empenamentos</li>
+      <li>Peso maior sobre a estrutura de fixação</li>
       <li>Mais indicado para ambientes com clima estável</li>
     </ul>
 
@@ -319,12 +317,12 @@
 
   </article>
 
-  <!-- Piso Engenheirado -->
+  <!-- Forro Engenheirado -->
   <article class="mtipos-card mtipos-card--eng fade-up visible" style="transition-delay:.08s">
 
     <span class="mtipos-badge">Alta Estabilidade</span>
 
-    <h3 class="mtipos-card-title">Piso Engenheirado</h3>
+    <h3 class="mtipos-card-title">Forro Engenheirado</h3>
 
     <p class="mtipos-intro">
       Estrutura multicamadas desenvolvida para reduzir movimentações naturais,
@@ -340,26 +338,27 @@
       <li>Estrutura multicamadas</li>
       <li>Maior estabilidade dimensional</li>
       <li>Resistência às variações climáticas</li>
-      <li>Permite réguas maiores e ambientes sofisticados</li>
+      <li>Permite réguas maiores e planos contínuos</li>
+      <li>Menor peso sobre a estrutura de fixação</li>
       <li>Excelente desempenho em diferentes instalações</li>
     </ul>
 
     <div class="mtipos-footer">
-      <h4g>Ideal para</h4>
+      <h4>Ideal para</h4>
       <p>Residências e projetos de alto padrão que exigem máxima estabilidade.</p>
     </div>
 
   </article>
 
 </div>
-      <p class="mtipos-outro fade-up">O resultado é um piso que mantém a elegância da madeira maciça, mas com desempenho
-        superior, oferecendo mais segurança, conforto e estabilidade para o dia a dia.</p>
+      <p class="mtipos-outro fade-up">O resultado é um forro que mantém a elegância da madeira maciça, mas com
+        desempenho superior, oferecendo mais segurança, conforto e estabilidade ao longo do tempo.</p>
 
       <!-- Bloco final: como a madeira reage -->
       <div class="mtipos-react">
         <div class="mtipos-react-head fade-up">
           <span class="mtipos-eyebrow">Reação da madeira à umidade e à temperatura</span>
-          <h3 class="mtipos-react-title">Como o piso de madeira reage?</h3>
+          <h3 class="mtipos-react-title">Como o forro de madeira reage?</h3>
         </div>
         <div class="mtipos-react-body">
           <p class="fade-up">A madeira é um elemento vivo e, como tal, sensível, reagindo constantemente ao ambiente ao
@@ -367,11 +366,11 @@
             forma lenta e quase imperceptível por meio de uma série de movimentos que, ao longo do tempo, alteram suas
             dimensões.</p>
           <p class="fade-up" style="transition-delay:.06s">É fácil perceber como essa resposta natural pode representar
-            um desafio quando utilizada em pisos, que estão regularmente sujeitos a grandes variações de temperatura em
-            superfícies extensas, além da presença frequente de umidade.</p>
+            um desafio quando utilizada em forros, que estão regularmente sujeitos a grandes variações de temperatura em
+            superfícies extensas, além da presença frequente de umidade — sobretudo em áreas cobertas e varandas.</p>
           <p class="fade-up" style="transition-delay:.12s">Felizmente, a pesquisa e o desenvolvimento trouxeram soluções
-            para esse comportamento natural. Com a evolução dos pisos engenheirados modernos, a madeira e a estabilidade
-            finalmente podem coexistir em perfeita harmonia.</p>
+            para esse comportamento natural. Com a evolução dos forros engenheirados modernos, a madeira e a
+            estabilidade finalmente podem coexistir em perfeita harmonia.</p>
         </div>
       </div>
     </div>
@@ -448,7 +447,7 @@
               </h3>
               <div class="text-white/50 text-sm font-light leading-relaxed space-y-4 max-w-xl">
                 <p>A cor da madeira vem dos extrativos que ela contém. A exposição ao ar e à luz modifica esses
-                  extrativos, transformando a cor original do parquete ao longo do tempo. Espécies tropicais, por
+                  extrativos, transformando a cor original do forro ao longo do tempo. Espécies tropicais, por
                   conterem mais extrativos, evoluem para marrons mais escuros.</p>
                 <p>Iroko e Parket apresentam as mudanças mais intensas — tábuas originalmente semelhantes podem assumir
                   tonalidades distintas. O Teak varia bastante no início mas se uniformiza com o tempo; o Wengé mantém
@@ -478,8 +477,8 @@
               </h3>
               <div class="text-white/50 text-sm font-light leading-relaxed space-y-4 max-w-xl">
                 <p>A madeira é um material natural e variegado: cada peça é única. Amostras compostas por poucas tábuas
-                  fornecem apenas uma ideia geral do parquete, sem representar fielmente todas as nuances e veios.</p>
-                <p>A cor muda com o tempo por exposição à luz e ao ar — um piso recém-instalado pode ter aparência
+                  fornecem apenas uma ideia geral do forro, sem representar fielmente todas as nuances e veios.</p>
+                <p>A cor muda com o tempo por exposição à luz e ao ar — um forro recém-instalado pode ter aparência
                   diferente de uma amostra já exposta.</p>
               </div>
             </div>
@@ -523,8 +522,8 @@
                 <p>A madeira dilata e retrai conforme umidade e temperatura. O ideal é manter o ar entre 15°C e 30°C e a
                   umidade relativa entre 45% e 65% — faixa também ideal para as pessoas — durante e após a instalação.
                 </p>
-                <p>No inverno pode ser necessário umidificar o ar. Em pisos com aquecimento, a superfície nunca deve
-                  ultrapassar 27°C; evite cobri-la com tapetes grossos que retenham calor.</p>
+                <p>No inverno pode ser necessário umidificar o ar. Em forros instalados sob laje exposta ao sol ou
+                  próximos a fontes de calor, evite que a superfície ultrapasse 27°C.</p>
                 <p>Produtos Parket com suporte de compensado de bétula (ver Especificações Técnicas) toleram condições
                   mais severas — umidade a partir de 30% e superfície até 29°C — mantendo a integridade.</p>
               </div>
@@ -599,7 +598,7 @@
     window.PARKET_FILTER = 'forros';
     document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>
-  <script defer src="index.js?v=8"></script>
+  <script defer src="index.js?v=14"></script>
   <script defer src="catalogo.js?v=10"></script>
 </body>
 

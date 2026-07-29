@@ -5,7 +5,7 @@
    2. Reveal on scroll — fades escopados ao #sobre
    3. Logo escuro sobre seções claras
    4. 02 Tecnologia (#tech-scroll) — camadas 3D dirigidas por scroll
-   5. Madeiras — piso 3D interativo
+   5. Madeiras — régua 3D interativa
    ═══════════════════════════════════════════════════════════════ */
 
 /* Hero split — progresso 0→1 conforme rola dentro do runway do #hero-viewport. */
@@ -129,13 +129,15 @@
   io.observe(sec);
 })();
 
-/* Madeiras — piso 3D fechado, girável com o mouse/toque (seção #madeiras-tipos) */
+/* Madeiras — régua 3D fechada, girável com o mouse/toque (seção #madeiras-tipos) */
 (function(){
   const stage = document.querySelector('#madeiras-tipos [data-floor3d]');
   const stack = document.querySelector('#madeiras-tipos [data-floor3d-stack]');
   if (!stage || !stack) return;
 
-  let rotX = 58, rotZ = -38;
+  /* rotX negativo = câmera por baixo: a camada nobre (face inferior) fica voltada
+     para o observador, como um forro visto do piso do ambiente. */
+  let rotX = -78, rotZ = 0;
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   let raf = 0;
   const render = () => {
@@ -148,8 +150,10 @@
 
   const move = (x, y) => {
     if (!dragging) return;
-    rotZ -= (x - lastX) * 0.4;
-    rotX = clamp(rotX - (y - lastY) * 0.4, 8, 88);
+    rotZ -= (x - lastX) * 0.3;
+    /* rotX negativo (câmera por baixo): arrastar PARA BAIXO abre a face aparente
+       na direção do observador — por isso o sinal é somado, não subtraído. */
+    rotX = clamp(rotX + (y - lastY) * 0.25, -84, -16);
     lastX = x; lastY = y;
     schedule();
   };
