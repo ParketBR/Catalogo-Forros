@@ -136,42 +136,44 @@
   if (!stage || !stack) return;
 
   /* rotX negativo = câmera por baixo: a camada nobre (face inferior) fica voltada
-     para o observador, como um forro visto do piso do ambiente. */
-  let rotX = -78, rotZ = 0;
-  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+     para o observador, como um forro visto do piso do ambiente. Fixo: a régua
+     só gira no eixo horizontal (rotZ). */
+  const ROT_X = -78;
+  let rotZ = 0;
   let raf = 0;
   const render = () => {
     raf = 0;
-    stack.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
+    stack.style.transform = `rotateX(${ROT_X}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
   };
   const schedule = () => { if (!raf) raf = requestAnimationFrame(render); };
 
-  let dragging = false, lastX = 0, lastY = 0;
+  let dragging = false, lastX = 0;
 
-  const move = (x, y) => {
+  const move = (x) => {
     if (!dragging) return;
     rotZ -= (x - lastX) * 0.3;
-    /* rotX negativo (câmera por baixo): arrastar PARA BAIXO abre a face aparente
-       na direção do observador — por isso o sinal é somado, não subtraído. */
-    rotX = clamp(rotX + (y - lastY) * 0.25, -84, -16);
-    lastX = x; lastY = y;
+    lastX = x;
     schedule();
   };
 
-  const onMouseMove = (e) => move(e.clientX, e.clientY);
+  const onMouseMove = (e) => move(e.clientX);
   const onMouseUp = () => end();
   const onTouchMove = (e) => {
     if (!dragging) return;
     const t = e.touches[0];
-    if (e.cancelable) e.preventDefault();
-    move(t.clientX, t.clientY);
+    /* Só bloqueia o scroll quando o gesto é claramente horizontal — arrastar
+       na vertical continua rolando a página. */
+    if (e.cancelable && Math.abs(t.clientX - startX) > Math.abs(t.clientY - startY)) e.preventDefault();
+    move(t.clientX);
   };
   const onTouchEnd = () => end();
+
+  let startX = 0, startY = 0;
 
   const start = (x, y) => {
     dragging = true;
     lastX = x;
-    lastY = y;
+    startX = x; startY = y;
     stage.classList.add('is-grabbing');
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseup', onMouseUp, { passive: true });

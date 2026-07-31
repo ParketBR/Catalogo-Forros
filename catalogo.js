@@ -320,7 +320,15 @@
           videos: [
             { type: 'mp4', src: 'https://parket.com.br/wp-content/uploads/2026/05/Parket-LaminaCarvalho.mp4', vertical: true, poster: 'forros/video-1-cover.jpg' },
             { type: 'mp4', src: 'https://parket.com.br/wp-content/uploads/2026/05/ApKikoVertical-1.mp4', vertical: true },
-            { type: 'mp4', src: 'https://parket.com.br/wp-content/uploads/2026/05/ForroObraFelipe.mp4', vertical: true }
+            { type: 'mp4', src: 'https://parket.com.br/wp-content/uploads/2026/05/ForroObraFelipe.mp4', vertical: true },
+            { type: 'youtube', id: 'aC4sHBcA5vI', vertical: true },
+            { type: 'youtube', id: 'VuOfu0tEk8c', vertical: true },
+            { type: 'youtube', id: '-EvbDbcaFds', vertical: true },
+            { type: 'youtube', id: 'HedyYHaSlG0', vertical: true },
+            { type: 'youtube', id: 'l3ER_9_misQ', vertical: true },
+            { type: 'youtube', id: 's31ibiYfs_E', vertical: true },
+            { type: 'youtube', id: 'zImd4pl2yJo', vertical: true },
+            { type: 'youtube', id: 'LJ1Ga815DLg', vertical: true }
           ],
           images: [
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-01.jpg", name: "Carvalho Europeu" },
