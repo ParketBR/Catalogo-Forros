@@ -689,6 +689,7 @@
       // Espécies-base: variações da mesma madeira (Customizado, Light Brown, etc.)
       // entram no índice como um item só, para não poluir a lista.
       const ESPECIES_BASE = [
+        'Muxarabi', 'Shou Sugi Ban', 'Laca Branca',
         'Carvalho Europeu', 'Tauari', 'Freijó', 'Cumaru', 'Nogueira', 'Teca',
         'Peroba do Campo', 'Peroba de Demolição', 'Cabreúva Dourada', 'Cabreúva Branca',
         'Itaúba', 'Ipê', 'Pinho de Riga'
@@ -865,11 +866,20 @@
               menuItems.push({ label: c.titleHtml || c.title, target: `colecao-${p.key}-${c.key}` });
             });
           } else if (p.images && p.images.length) {
-            const seen = new Set();
+            // mesmo agrupamento do índice de modelos, para o menu não repetir
+            // "Carvalho Europeu" três vezes
+            const porBase = new Map();
             p.images.forEach((im, i) => {
               const nm = (im && typeof im === 'object') ? im.name : null;
-              if (nm && !seen.has(nm)) { seen.add(nm); menuItems.push({ label: nm, target: `foto-${p.key}-${i}` }); }
+              if (!nm) return;
+              const base = especieBase(nm);
+              if (!porBase.has(base)) porBase.set(base, { name: nm, base, i, count: 0 });
+              porBase.get(base).count++;
             });
+            porBase.forEach(m => menuItems.push({
+              label: m.count > 1 ? m.base : m.name,
+              target: `foto-${p.key}-${m.i}`
+            }));
           }
         });
 
