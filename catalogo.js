@@ -352,7 +352,24 @@
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-21.jpg", name: "Carvalho Europeu Customizado" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-22.jpg", name: "Toblerone de Cabreúva Branca" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-23.jpg", name: "Freijó" },
-            { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-25.jpg", name: "Cumaru" }
+            { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-25.jpg", name: "Cumaru" },
+            // Novas fotos (sem descrição por enquanto)
+            { src: "forros/novas/FO-N-01.jpg" },
+            { src: "forros/novas/FO-N-02.jpg" },
+            { src: "forros/novas/FO-N-03.jpg" },
+            { src: "forros/novas/FO-N-04.jpg" },
+            { src: "forros/novas/FO-N-05.jpg" },
+            { src: "forros/novas/FO-N-06.jpg" },
+            { src: "forros/novas/FO-N-07.jpg" },
+            { src: "forros/novas/FO-N-08.jpg" },
+            { src: "forros/novas/FO-N-09.jpg" },
+            { src: "forros/novas/FO-N-10.jpg" },
+            { src: "forros/novas/FO-N-11.jpg" },
+            { src: "forros/novas/FO-N-12.jpg" },
+            { src: "forros/novas/FO-N-13.jpg" },
+            { src: "forros/novas/FO-N-14.jpg" },
+            { src: "forros/novas/FO-N-15.jpg" },
+            { src: "forros/novas/FO-N-16.jpg" }
           ]
         }
       ];
