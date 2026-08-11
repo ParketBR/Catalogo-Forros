@@ -363,8 +363,7 @@
             { src: "forros/novas/FO-N-07.jpg" },
             { src: "forros/novas/FO-N-08.jpg" },
             { src: "forros/novas/FO-N-09.jpg" },
-            { src: "forros/novas/FO-N-10.jpg" },
-            { src: "forros/novas/FO-N-11.jpg" }
+            { src: "forros/novas/FO-N-10.jpg" }
           ]
         }
       ];
