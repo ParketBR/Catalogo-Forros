@@ -144,7 +144,7 @@
     .menu-overlay.is-open .menu-list li:nth-child(8) { transition-delay: 0.52s; }
     .menu-list a {
       font-family: var(--font-display);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.02em;
       font-size: clamp(1.75rem, 4vw, 2.625rem);
       color: rgba(255,255,255,0.55);
@@ -192,9 +192,13 @@
       color: rgba(255,255,255,0.45);
       font-weight: 400;
     }
+    /* Peso 300, nao 200: em tela 1x a haste do Inter 200 nesses corpos nao cai
+       inteira num pixel — letras de haste unica renderizam cinza e as densas
+       (m, M) acumulam preto solido, dando aparencia de negrito aleatorio.
+       Vale para toda a tipografia de display do site. */
     .display-title {
       font-family: var(--font-display);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.04em;
       line-height: 1.02;
     }
@@ -283,7 +287,7 @@
     }
     .index-link {
       font-family: var(--font-display);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.03em;
       line-height: 1;
       font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -374,7 +378,7 @@
     .product-cover-title {
       font-family: var(--font-display);
       font-size: var(--text-h1);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.05em;
       line-height: 1.05;
     }
@@ -479,7 +483,7 @@
     .collection-cover-title {
       font-family: var(--font-display);
       font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.04em;
       line-height: 1.05;
     }
@@ -914,7 +918,7 @@
     .porque-title {
       font-family: var(--font-display);
       font-size: var(--text-h2);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.03em;
       line-height: 1.1;
       color: #ffffff;
@@ -1076,7 +1080,7 @@
     }
     .texturas-nome {
       font-family: var(--font-display);
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.03em;
       line-height: 1.05;
       font-size: clamp(2.4rem, 5.2vw, 4.6rem);
