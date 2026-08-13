@@ -358,12 +358,12 @@
             { src: "forros/novas/FO-N-02.jpg" },
             { src: "forros/novas/FO-N-03.jpg" },
             { src: "forros/novas/FO-N-04.jpg" },
-            { src: "forros/novas/FO-N-05.jpg" },
+            // Foto recortada no forro: o padrao "center 65%" cortaria o teto fora.
+            { src: "forros/novas/FO-N-05.jpg", focus: '30%' },
             { src: "forros/novas/FO-N-06.jpg" },
             { src: "forros/novas/FO-N-07.jpg" },
             { src: "forros/novas/FO-N-08.jpg" },
-            { src: "forros/novas/FO-N-09.jpg" },
-            { src: "forros/novas/FO-N-10.jpg" }
+            { src: "forros/novas/FO-N-09.jpg" }
           ]
         }
       ];
