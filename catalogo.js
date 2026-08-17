@@ -355,7 +355,6 @@
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-25.jpg", name: "Cumaru" },
             // Novas fotos (sem descrição por enquanto)
             { src: "forros/novas/FO-N-01.jpg" },
-            { src: "forros/novas/FO-N-02.jpg" },
             { src: "forros/novas/FO-N-03.jpg" },
             { src: "forros/novas/FO-N-04.jpg" },
             { src: "forros/novas/FO-N-05.jpg" },
