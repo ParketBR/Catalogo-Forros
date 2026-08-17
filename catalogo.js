@@ -349,14 +349,17 @@
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-17.jpg", name: "Cabreúva Dourada" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-19.jpg", name: "Peroba de Demolição" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-20.jpg", name: "Cumaru" },
-            { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-21.jpg", name: "Carvalho Europeu Customizado" },
+            // Par lado a lado (`pairNext`): esta foto divide a tela com a seguinte
+            { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-21.jpg", name: "Carvalho Europeu Customizado", pairNext: true },
+            { src: "forros/novas/FO-N-01.jpg" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-22.jpg", name: "Toblerone de Cabreúva Branca" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-23.jpg", name: "Freijó" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-25.jpg", name: "Cumaru" },
             // Novas fotos (sem descrição por enquanto)
-            { src: "forros/novas/FO-N-01.jpg" },
-            { src: "forros/novas/FO-N-03.jpg" },
-            { src: "forros/novas/FO-N-04.jpg" },
+            // Retratos de sala em que o forro ripado ocupa o terço superior —
+            // o corte padrão (65%) mostra só o piso. Sobe o enquadramento.
+            { src: "forros/novas/FO-N-03.jpg", focus: '15%' },
+            { src: "forros/novas/FO-N-04.jpg", focus: '15%' },
             { src: "forros/novas/FO-N-05.jpg" },
             { src: "forros/novas/FO-N-06.jpg" },
             { src: "forros/novas/FO-N-07.jpg" }
@@ -482,7 +485,7 @@
           });
         }, { threshold: 0.25 });
 
-        photos.forEach((img, i) => {
+        const buildItem = (img, i) => {
           const caption = img.name || names[i + 1];
           const num = String(i + 1).padStart(2, '0');
           const item = document.createElement('figure');
@@ -512,9 +515,27 @@
             <img decoding="async" loading="${loadingAttr}"${priorityAttr} src="${proxiedSrc}"${srcsetAttr} alt="${caption || title + ' ' + (i + 1)}"${focusStyle}>
             <figcaption class="photo-stream-caption">${label}</figcaption>
           `;
+          return item;
+        };
+
+        for (let i = 0; i < photos.length; i++) {
+          const item = buildItem(photos[i], i);
+          // `pairNext`: esta foto e a seguinte dividem a mesma faixa de tela
+          if (photos[i].pairNext && photos[i + 1]) {
+            const next = buildItem(photos[i + 1], i + 1);
+            const pair = document.createElement('div');
+            pair.className = 'photo-stream-pair';
+            pair.appendChild(item);
+            pair.appendChild(next);
+            container.appendChild(pair);
+            inViewIo.observe(item);
+            inViewIo.observe(next);
+            i++;
+            continue;
+          }
           container.appendChild(item);
           inViewIo.observe(item);
-        });
+        }
       }
 
       // ─── VIDEO BLOCK ─────────────────────────────────────────────
