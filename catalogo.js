@@ -1241,11 +1241,13 @@
         // Cumaru, Ipê, Tauari, Freijó e Carvalho Europeu. Não incluir espécie que
         // não esteja na linha, mesmo que exista swatch em /texturas.
         const ESPECIES = [
-          ['cumaru', 'Cumaru', 'Madeira extremamente resistente, de cor castanho-avermelhada, indicada para projetos que exigem durabilidade e imponência.'],
-          ['ipe-tabaco', 'Ipê', 'Densa e de tonalidade castanho-oliva profunda, o ipê entrega presença marcante e altíssima durabilidade.'],
+          ['cabreuva-branca', 'Cabreúva Branca', 'Mais clara e delicada, é valorizada por sua suavidade e por criar atmosferas leves e acolhedoras.'],
           ['tauari', 'Tauari', 'Clara e homogênea, o tauari ilumina os ambientes, oferecendo um visual moderno e minimalista.'],
-          ['freijo', 'Freijó', 'Madeira brasileira de tom castanho-dourado e veios suaves, transmite sofisticação e aconchego ao ambiente.'],
-          ['carvalho-europeu', 'Carvalho Europeu', 'Nobre e versátil, o carvalho europeu traz veios equilibrados e um tom acetinado que une tradição e modernidade.'],
+          ['carvalho-europeu', 'Carvalho Europeu', 'Nobreza atemporal em tons claros e acetinados, com veios suaves que trazem equilíbrio entre tradição e modernidade.'],
+          ['freijo', 'Freijó', 'De coloração amendoada e desenho discreto, confere sofisticação serena e um acabamento naturalmente elegante.'],
+          ['peroba-do-campo', 'Peroba do Campo', 'Tradicional e charmosa, sua coloração variada entre o rosado e o dourado confere autenticidade e beleza natural.'],
+          ['cabreuva-dourada', 'Cabreúva Dourada', 'Apresenta brilho natural e cor dourada, com veios elegantes que proporcionam luxo e vitalidade.'],
+          ['cumaru', 'Cumaru', 'Madeira extremamente resistente, de cor castanho-avermelhada, indicada para projetos que exigem durabilidade e imponência.'],
         ];
         const n = ESPECIES.length;
         const pad = (v) => String(v).padStart(2, '0');
@@ -1253,7 +1255,7 @@
         // Monta as imagens empilhadas (crossfade por opacity)
         ESPECIES.forEach(([slug, label], i) => {
           const img = document.createElement('img');
-          img.src = `texturas/${slug}.jpg`;
+          img.src = `texturas/${slug}.webp`;
           img.alt = '';
           img.loading = 'lazy';
           img.decoding = 'async';
@@ -1311,11 +1313,16 @@
           palco.classList.add('is-usado');
         };
 
-        stage.style.setProperty('--texturas-p', '0');
+        // Com uma única espécie não há para onde navegar: as duas setas nascem
+        // desativadas e a dica de arraste sai de cena (o ir() nunca roda, então
+        // ele não teria como ajustar nada disso depois).
+        const unica = n === 1;
+        stage.style.setProperty('--texturas-p', unica ? '1' : '0');
         setas.forEach(b => {
-          if (Number(b.dataset.dir) < 0) b.disabled = true;
+          if (unica || Number(b.dataset.dir) < 0) b.disabled = true;
           b.addEventListener('click', () => ir(idx + Number(b.dataset.dir), Number(b.dataset.dir)));
         });
+        if (unica) { palco.classList.add('is-usado'); wrap.classList.add('texturas-unica'); }
 
         // ── roda/trackpad horizontal (deltaX) e shift+scroll
         let acumulado = 0;
