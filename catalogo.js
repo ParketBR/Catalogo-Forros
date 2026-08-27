@@ -337,6 +337,10 @@
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-04.jpg", name: "Tauari Customizado" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-05.jpg", name: "Cumaru" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-06.jpg", name: "Cumaru" },
+            // Forro ripado de Cumaru: a madeira ocupa o topo do quadro —
+            // o corte padrão (65%) mostraria só o estar. Sobe o enquadramento.
+            { src: "forros/ripado-de-cumaru-01.webp", name: "Cumaru", focus: '30%' },
+            { src: "forros/ripado-de-cumaru-02.webp", name: "Cumaru", focus: '40%' },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-07.jpg", name: "Carvalho Europeu Light Brown" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-08.jpg", name: "Peroba do Campo" },
             { src: "https://parket.com.br/wp-content/uploads/2025/10/PRO_FO-09.jpg", name: "Milano" },
@@ -362,11 +366,7 @@
             { src: "forros/novas/FO-N-04.jpg", focus: '15%' },
             { src: "forros/novas/FO-N-05.jpg" },
             { src: "forros/novas/FO-N-06.jpg" },
-            { src: "forros/novas/FO-N-07.jpg" },
-            // Forro ripado de Cumaru: a madeira ocupa o topo do quadro —
-            // o corte padrão (65%) mostraria só o estar. Sobe o enquadramento.
-            { src: "forros/ripado-de-cumaru-01.webp", name: "Cumaru", focus: '30%' },
-            { src: "forros/ripado-de-cumaru-02.webp", name: "Cumaru", focus: '40%' }
+            { src: "forros/novas/FO-N-07.jpg" }
           ]
         }
       ];
