@@ -362,7 +362,11 @@
             { src: "forros/novas/FO-N-04.jpg", focus: '15%' },
             { src: "forros/novas/FO-N-05.jpg" },
             { src: "forros/novas/FO-N-06.jpg" },
-            { src: "forros/novas/FO-N-07.jpg" }
+            { src: "forros/novas/FO-N-07.jpg" },
+            // Forro ripado de Cumaru: a madeira ocupa o topo do quadro —
+            // o corte padrão (65%) mostraria só o estar. Sobe o enquadramento.
+            { src: "forros/ripado-de-cumaru-01.webp", name: "Cumaru", focus: '30%' },
+            { src: "forros/ripado-de-cumaru-02.webp", name: "Cumaru", focus: '40%' }
           ]
         }
       ];
