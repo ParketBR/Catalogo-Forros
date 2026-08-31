@@ -252,7 +252,7 @@
   margin-bottom: 1.25rem;
 }
 
-/* Peso 300, nao 200: em tela 1x a haste do Inter 200 nesse corpo fica em
+/* Peso 300, nao 200: em tela 1x a haste do Geist 200 nesse corpo fica em
    ~1,85px e nunca cai inteira num pixel, entao letras de haste unica (i, l)
    renderizam cinza enquanto as densas (m, M) acumulam preto solido — a linha
    parece ter negrito aleatorio. O 300 engrossa o bastante para as finas
