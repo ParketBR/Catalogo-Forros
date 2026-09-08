@@ -332,7 +332,6 @@
             { type: 'youtube', id: 'HedyYHaSlG0', vertical: true },
             { type: 'youtube', id: 'l3ER_9_misQ', vertical: true },
             { type: 'youtube', id: 's31ibiYfs_E', vertical: true },
-            { type: 'youtube', id: 'zImd4pl2yJo', vertical: true },
             { type: 'youtube', id: 'LJ1Ga815DLg', vertical: true }
           ],
           images: [
