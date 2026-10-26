@@ -844,7 +844,7 @@
 
       // ─── BUILD PRODUCTS NAV ──────────────────────────────────────
       const productsNav = document.getElementById('products-nav');
-      PRODUCTS.forEach((p, i) => {
+      if (productsNav) PRODUCTS.forEach((p, i) => {
         const a = document.createElement('a');
         a.className = 'index-link';
         a.href = `#produto-${p.key}`;
